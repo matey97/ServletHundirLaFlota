@@ -29,15 +29,13 @@ public class SalirPartidaServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
 		
-		System.out.println("Salir:");
+		//Ponemos el atributo partida a null y invalidamos sesion
 		HttpSession session = request.getSession(true);
-		System.out.println(session.getAttribute("partida"));
 		session.setAttribute("partida", null );
 		session.invalidate();
-		response.sendRedirect("index.html");
+		
 		//Redirigimos a index.html
-		//RequestDispatcher vista = request.getRequestDispatcher("index.html");
-		//vista.forward(request, response);
+		response.sendRedirect("index.html");		
 	}
 
 }

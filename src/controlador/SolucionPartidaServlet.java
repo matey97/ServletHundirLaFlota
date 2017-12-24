@@ -30,12 +30,14 @@ public class SolucionPartidaServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
+		
+		//Invalidamos la sesion para evitar tramposos
 		HttpSession session = request.getSession(true);
 		Partida partida =(Partida)session.getAttribute("partida");
 		session.invalidate();
 		
 		
-		//Redireccionamos a TableroSolucion.jsp
+		//Redireccionamos a TableroSolucion.jsp, pasaldole la partida
 		request.setAttribute("partida", partida);
 		RequestDispatcher vista = request.getRequestDispatcher("TableroSolucion.jsp");
 		vista.forward(request, response);

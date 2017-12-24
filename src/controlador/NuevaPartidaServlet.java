@@ -28,6 +28,7 @@ public class NuevaPartidaServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
+		
 		//Invalidamos la sesion actual
 		HttpSession session = request.getSession(true);
 		session.removeAttribute("partida");
