@@ -29,7 +29,8 @@ public class NuevaPartidaServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
 		//Invalidamos la sesion actual
-		HttpSession session = request.getSession();
+		HttpSession session = request.getSession(true);
+		session.removeAttribute("partida");
 		session.invalidate();
 		
 		//Redirigimos a HundirFlotaServlet, al no haber sesion creará una con una nueva partida.

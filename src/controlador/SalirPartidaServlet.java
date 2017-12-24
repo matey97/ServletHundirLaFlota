@@ -20,7 +20,7 @@ public class SalirPartidaServlet extends HttpServlet {
      */
     public SalirPartidaServlet() {
         super();
-        
+        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -28,13 +28,16 @@ public class SalirPartidaServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
-		//Invalidamos sesion
-		HttpSession session = request.getSession();
-		session.invalidate();
 		
+		System.out.println("Salir:");
+		HttpSession session = request.getSession(true);
+		System.out.println(session.getAttribute("partida"));
+		session.setAttribute("partida", null );
+		session.invalidate();
+		response.sendRedirect("index.html");
 		//Redirigimos a index.html
-		RequestDispatcher vista = request.getRequestDispatcher("index.html");
-		vista.forward(request, response);
+		//RequestDispatcher vista = request.getRequestDispatcher("index.html");
+		//vista.forward(request, response);
 	}
 
 }

@@ -31,7 +31,7 @@
 	<%	
 		//Obtenemos la sesion y la partida en juego
 		final int AGUA = -1, TOCADO = -2, HUNDIDO = -3;
-		session = request.getSession();
+		session = request.getSession(true);
 		Partida partida = (Partida) session.getAttribute("partida");
 		int fila = -1, columna = -1;
 		
@@ -104,8 +104,8 @@
 		out.println("</form>");
 		
 	%>
-	<br><a href="SolucionPartidaServlet">Muestra solucion</a><br>
-	<a href="NuevaPartidaServlet">Nueva partida</a><br>
-	<a href="SalirPartidaServlet">Salir</a><br>
+	<br><a href="/ServletHundirLaFlota/SolucionPartidaServlet">Muestra solucion</a><br>
+	<a href="/ServletHundirLaFlota/NuevaPartidaServlet">Nueva partida</a><br>
+	<a href="/ServletHundirLaFlota/SalirPartidaServlet">Salir</a><br>
 </body>
 </html>

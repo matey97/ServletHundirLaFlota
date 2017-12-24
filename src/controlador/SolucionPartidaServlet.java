@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import modelo.Partida;
+
 /**
  * Servlet implementation class SolucionPartidaServlet
  */
@@ -28,8 +30,13 @@ public class SolucionPartidaServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
+		HttpSession session = request.getSession(true);
+		Partida partida =(Partida)session.getAttribute("partida");
+		session.invalidate();
+		
 		
 		//Redireccionamos a TableroSolucion.jsp
+		request.setAttribute("partida", partida);
 		RequestDispatcher vista = request.getRequestDispatcher("TableroSolucion.jsp");
 		vista.forward(request, response);
 	}

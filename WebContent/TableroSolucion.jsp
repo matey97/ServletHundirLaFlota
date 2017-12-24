@@ -25,8 +25,8 @@
 	<%
 		//Obtenemos la sesion y la partida
 		final int AGUA=-1;
-		session = request.getSession();
-		Partida partida = (Partida) session.getAttribute("partida");
+		Partida partida = (Partida) request.getAttribute("partida");
+		
 		
 		//Mensajes de estado
 		out.println("Solucion PARTIDA<br>");
@@ -65,8 +65,6 @@
 		out.println("</table>");
 		out.println("</form>");
 		
-		//Invalidamos la sesion para evitar tramposos.
-		session.invalidate();
 	%>
 	
 	<br><a href="NuevaPartidaServlet">Nueva partida</a><br>

@@ -35,7 +35,7 @@ public class HundirFlotaServlet extends HttpServlet {
 		HttpSession session = request.getSession(true);
 		Partida partida;
 		boolean disparada = false;
-		
+		System.out.println(session.getAttribute("partida"));
 		//Si no habia partida en la sesion creamos una nueva
 		if (session.getAttribute("partida")==null) {
 			partida = new Partida(8,8,6);
@@ -47,8 +47,7 @@ public class HundirFlotaServlet extends HttpServlet {
 				int fila = Integer.valueOf(posicionesCasilla[0]);
 				int columna = Integer.valueOf(posicionesCasilla[1]);
 				disparada = partida.casillaDisparada(fila, columna);
-				int resultado = partida.pruebaCasilla(fila, columna);	
-				
+				partida.pruebaCasilla(fila, columna);	
 			}	
 		}
 		//Guardamos la partida en la sesion
